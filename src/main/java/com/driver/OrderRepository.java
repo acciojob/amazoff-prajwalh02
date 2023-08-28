@@ -6,14 +6,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class OrderRepository {
 
-    HashMap<String, Order> orderDetails = new HashMap<>();
-    HashMap<String, DeliveryPartner> partnerDetails = new HashMap<>();
-    HashMap<String, String> orderToPartner = new HashMap<>();   //contains order and partner
-    HashMap<String, List<String>> partnerToOrder = new HashMap<>();  //contains list of all order that partner have
+    Map<String, Order> orderDetails = new HashMap<>();
+    Map<String, DeliveryPartner> partnerDetails = new HashMap<>();
+    Map<String, String> orderToPartner = new HashMap<>();    //contains order - partner pair
+    Map<String, List<String>> partnerToOrder = new HashMap<>();  //contains list of all order that partner have
 
 
     public void addOrder(Order order) {
@@ -83,8 +84,8 @@ public class OrderRepository {
     }
 
     public void deletePartnerById(String partnerId) {
-        List<String> ordersOFPartner = partnerToOrder.get(partnerId);
-        for(String orderID : ordersOFPartner) {
+        List<String> ordersOfPartner = partnerToOrder.get(partnerId);
+        for(String orderID : ordersOfPartner) {
             orderToPartner.remove(orderID);
         }
         partnerToOrder.remove(partnerId);

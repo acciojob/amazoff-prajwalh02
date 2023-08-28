@@ -55,18 +55,17 @@ public class OrderService {
 
         int lastOrderTime = orderRepository.getLastDeliveryTimeByPartnerId(partnerId);
 
-        int hours = lastOrderTime / 60;
-        int minutes = lastOrderTime % 60;
+        int hours = lastOrderTime/60;
+        int minutes = lastOrderTime%60;
         String HH = ""+hours;
         String MM = ""+minutes;
 
-        if(HH.length() == 1) {
+        if(HH.length()==1){
             HH = '0'+HH;
         }
-        if(MM.length() == 1) {
+        if(MM.length()==1){
             MM = '0'+MM;
         }
-
         return HH+':'+MM;
     }
 
