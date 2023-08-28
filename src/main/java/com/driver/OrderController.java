@@ -50,7 +50,7 @@ public class OrderController {
 
         Order order= null;
         //order should be returned with an orderId.
-        orderService.getOrderById(orderId);
+        order = orderService.getOrderById(orderId);
 
         return new ResponseEntity<>(order, HttpStatus.CREATED);
     }
@@ -59,7 +59,7 @@ public class OrderController {
     public ResponseEntity<DeliveryPartner> getPartnerById(@PathVariable String partnerId){
 
         DeliveryPartner deliveryPartner = null;
-        orderService.getPartnerById(partnerId);
+        deliveryPartner = orderService.getPartnerById(partnerId);
 
         //deliveryPartner should contain the value given by partnerId
 
